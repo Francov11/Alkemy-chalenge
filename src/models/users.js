@@ -1,8 +1,24 @@
-const {Sequelize ,DataTypes, Model } = require('sequelize');
-const {sequelize} = require('../database/index');
-
-
-(async() => {
-    await sequelize.sync({ force: true })
-    console.log('hola')
-})
+module.exports = (sequelize ,DataTypes) => {
+    return sequelize.define('user', {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        lastname: {
+            type: DataTypes.STRING
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
+    })
+}
