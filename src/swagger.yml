@@ -1,0 +1,94 @@
+openapi: "3.0.0"
+info:
+  title: CHALLENGE BACKEND - NodeJs
+  version: "1.2"
+  description: API para explorar el mundo de Disney
+
+servers:
+  - url: http://localhost:8080
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT  # optional, for documentation purposes only
+
+security:
+  - bearerAuth: []
+
+paths:
+  /auth/register:
+    post:
+      tags:
+        - Users Login
+      summary: Create user
+      description: Allows create users
+      responses:
+        "201":
+          description: User created
+        "400":
+          description: Internal error
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'message': Error'}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: name
+                  example: Sophi
+                lastname:
+                  type: string
+                  description: Lastname
+                  example: Olivera
+                email:
+                  type: string
+                  description: Email
+                  example: sophia@nothing.com
+                password:
+                  type: string
+                  description: Password
+                  example: 1234
+                repeatPassword:
+                  type: string
+                  description: Confirm password
+                  example: 1234
+
+  /auth/login:
+    post:
+      tags:
+        - Users Login
+      summary: User login
+      description: Login of the users
+      responses:
+        "201":
+          description: User loged
+        "400":
+          description: Incorrect information
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'message': Credentials error'}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email
+                  example: sophia@nothing.com
+                password:
+                  type: string
+                  description: Password
+                  example: 1234
+                  

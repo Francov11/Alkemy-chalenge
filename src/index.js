@@ -12,8 +12,19 @@ app.use(helmet())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Routes config
+const auth = require('./users/routes/auth');
+app.use('/', auth);
+const users = require('./users/routes/users');
+app.use('/', users);
+/*
 app.listen(server.port, () => {
 	console.log(`Server listening on port ${server.port}`);
+})
+*/
+const port = process.env.PORT || 8080;
+app.listen(port, () => {
+	console.log(`Server listening on port http://localhost:${port}`);
 })
 
 module.exports = app

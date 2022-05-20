@@ -2,7 +2,7 @@ require('dotenv').config()
 
 module.exports = {
     server: {
-        port: process.env.PORT || 8080
+        port: process.env.SERVER_PORT
     },
     DB: {
         username: process.env.MYSQL_USER,
