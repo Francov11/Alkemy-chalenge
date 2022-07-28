@@ -1,5 +1,6 @@
 const { Sequelize } = require('sequelize');
 const userModel = require('../models/users')
+const characterModel = require('../models/characters')
 
 const sequelize = new Sequelize('alkemy', 'root', 'mariano11', {
     host: 'localhost',
@@ -7,6 +8,7 @@ const sequelize = new Sequelize('alkemy', 'root', 'mariano11', {
     })
 
 const User = userModel(sequelize,Sequelize)
+const Characters = characterModel(sequelize,Sequelize)
 
 sequelize.sync({force:false})
 .then(() => {
@@ -15,5 +17,6 @@ sequelize.sync({force:false})
 
 module.exports = {
     sequelize,
-    User
+    User,
+    Characters
 }

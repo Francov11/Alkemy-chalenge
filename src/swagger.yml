@@ -42,7 +42,7 @@ paths:
               properties:
                 name:
                   type: string
-                  description: name
+                  description: namesa
                   example: Sophi
                 lastname:
                   type: string
