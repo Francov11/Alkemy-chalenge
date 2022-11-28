@@ -91,4 +91,66 @@ paths:
                   type: string
                   description: Password
                   example: 1234
-                  
+
+  /allCharacters:
+    get:
+      tags:
+        - Characters 
+      summary: Get all Characters
+      description: Allows users get all the Characters
+      responses:
+          "200":
+            description: Shows Characters
+          "400":
+            description: Error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example: {'message': Credentials error'}
+        
+  /createCharacter:
+    post:
+      tags:
+        - Characters 
+      summary: Add character
+      description: Allows create a character
+      responses:
+          "200":
+            description: Add character
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example: {'message': Character Created}
+          "400":
+            description: Error
+            content:
+              application/json:
+                schema:
+                  type: object
+                  example: {'message': Credentials error'}
+
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  description: Image URL
+                  example: https://imgur.com/a/MoX4MVJ
+                name:
+                  type: string
+                  description: Character name
+                  example: Buzz Lightyear
+                age:
+                  type: integer
+                  description: Character age
+                  example: 22
+                weight:
+                  type: string
+                  description: Character weight
+                  example: 1kg
+                

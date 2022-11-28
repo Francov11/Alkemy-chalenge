@@ -17,6 +17,8 @@ const auth = require('./users/routes/auth');
 app.use('/', auth);
 const users = require('./users/routes/users');
 app.use('/', users);
+const characters = require('./characters/routes/character')
+app.use('/', characters)
 /*
 app.listen(server.port, () => {
 	console.log(`Server listening on port ${server.port}`);
